@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set global font and dark background */
+body {
+@apply font-sans bg-black text-white; /* Using bg-black and text-white for consistency */
+scroll-behavior: smooth;
+overflow-x: hidden;
+}
+
+/* 🛑 RGB COLOR DEFINITIONS FOR SKILLS NEON GLOW 🛑 */
+/* These variables are required for the dynamic shadow coloring in the SkillBall component (Skills.jsx) */
+:root {
+/* Tailwind Colors used in the Skills component */
+--color-red-400: 248 113 113;
+--color-blue-400: 96 165 250;
+--color-purple-400: 192 132 252;
+--color-yellow-400: 250 204 21;
+--color-green-400: 74 222 128; 
+--color-pink-400: 244 114 182;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
+}
+::-webkit-scrollbar-track {
+background: #0a0b0f;
+}
+::-webkit-scrollbar-thumb {
+background: #00ffff;
+border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #00cccc;
+}
+
+/* Basic section padding/margin for uniformity (Tailwind component utility) */
+@layer components {
+.section-padding {
+@apply py-20 px-4 sm:px-8 md:py-28 md:px-16 max-w-7xl mx-auto;
+}
+}
+/* --- Custom Keyframes for Rotation --- */
+@keyframes spin-slow {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+from { transform: rotate(0deg); }
+to { transform: rotate(-360deg); }
+}
+
+/* --- Custom Keyframes for Horizontal Marquee Scroll --- */
+@keyframes marquee {
+0% { transform: translateX(0); }
+100% { transform: translateX(-100%); }
+}
+
+/* --- Tailwind Utility Classes (Layered) --- */
+@layer utilities {
+.animate-spin-slow {
+animation: spin-slow 25s linear infinite;
+}
+.animate-spin-reverse {
+animation: spin-reverse 25s linear infinite;
+}
+.animate-marquee {
+animation: marquee 30s linear infinite;
+}
+/* 🛑 Keyframe for subtle floating motion in the Skills component */
+@keyframes subtle-float {
+0% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-3px) rotate(0.5deg); }
+100% { transform: translateY(0px) rotate(0deg); }
+}
+.animate-subtle-float {
+animation: subtle-float 4s ease-in-out infinite;
+}
+
+/* Add this to your project's main CSS file */
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* This is often needed too, but try the above first */
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+}
